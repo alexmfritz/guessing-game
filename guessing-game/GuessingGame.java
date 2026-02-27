@@ -1,5 +1,9 @@
+import java.util.*;
+
 public class GuessingGame {
+    public static final int MAX = 100;
     public static void main(String[] args) {
-        // Code here
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
     }
 }
