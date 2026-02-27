@@ -24,6 +24,32 @@ public class GuessingGame {
         System.out.println();
     }
 
+    public static int playOneGame(Scanner scanner, Random rand) {
+        int answer = rand.nextInt(MAX) + 1;
+
+        System.out.print("I'm thinking of a number between 1 and " + MAX + "...");
+
+        int totalGuesses = 0;
+        int currGuess;
+
+        do {
+            System.out.print("Your guess? ");
+            currGuess = scanner.nextInt();
+            totalGuesses++;
+
+            if (currGuess < answer) {
+                System.out.println("It's higher.");
+            } else {
+                System.out.println("It's lower.");
+            }
+        } while (currGuess != answer);
+        
+        String message = totalGuesses == 1 ? "1 guess!" : totalGuesses + " guesses!";
+        System.out.println("You got it right in " + message);
+
+        return totalGuesses;
+    }
+
     public static void printStats(int totalGames, int totalGuesses, int bestGame) {
         System.out.println("Overall results:");
         System.out.println("Overall games = " + totalGames);
