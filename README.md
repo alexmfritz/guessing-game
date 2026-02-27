@@ -1,6 +1,6 @@
 # Guessing Game
 
-Programming Project #4 for CS& 141 (Winter 2026) at Edmonds College. Focuses on `while` loops and random numbers.
+Programming Project #3 for CS& 141 (Winter 2026) at Edmonds College. Focuses on `while` loops and random numbers.
 
 ## Overview
 
