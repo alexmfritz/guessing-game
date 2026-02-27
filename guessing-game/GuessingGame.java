@@ -15,11 +15,27 @@ public class GuessingGame {
         int totalGames = 0;
         int totalGuesses = 0;
         int bestGame = MAX + 1;
+        String response;
+
+        printIntro();
+
+        do {
+            int currRoundGuesses = playOneGame(scanner, rand);
+            totalGames++;
+            totalGuesses += currRoundGuesses;
+            bestGame = Math.min(bestGame, currRoundGuesses);
+
+            System.out.print("Do you want to play again? ");
+            response = scanner.next();
+        } while (response.startsWith("y") || response.startsWith("Y"));
+
+        System.out.println();
+        printStats(totalGames, totalGuesses, bestGame);
     }
 
     public static void printIntro() {
         System.out.println("Integer unknown");
-        System.out.println("Bound by zero and one hundred");
+        System.out.println("Bound by one and one hundred");
         System.out.println("Seek it with a guess");
         System.out.println();
     }
@@ -27,19 +43,19 @@ public class GuessingGame {
     public static int playOneGame(Scanner scanner, Random rand) {
         int answer = rand.nextInt(MAX) + 1;
 
-        System.out.print("I'm thinking of a number between 1 and " + MAX + "...");
+        System.out.println("I'm thinking of a number between 1 and " + MAX + "...");
 
         int totalGuesses = 0;
         int currGuess;
 
         do {
-            System.out.print("Your guess? ");
+            System.out.println("Your guess? ");
             currGuess = scanner.nextInt();
             totalGuesses++;
 
             if (currGuess < answer) {
                 System.out.println("It's higher.");
-            } else {
+            } else if (currGuess > answer) {
                 System.out.println("It's lower.");
             }
         } while (currGuess != answer);
@@ -52,9 +68,9 @@ public class GuessingGame {
 
     public static void printStats(int totalGames, int totalGuesses, int bestGame) {
         System.out.println("Overall results:");
-        System.out.println("Overall games = " + totalGames);
+        System.out.println("Total games = " + totalGames);
         System.out.println("Total guesses = " + totalGuesses);
-        System.out.printf("Guesses/Games = %.fn%n", (double) totalGuesses / totalGames);
+        System.out.printf("Guesses/games = %.1f%n", (double) totalGuesses / totalGames);
         System.out.println("Best game = " + bestGame);
     }
 }
